@@ -3,7 +3,7 @@ var connection = require("./connection.js");
 
 var orm = {
     all: function(tableInput, cb) {
-        var QueryString = "SELECT * FROM ??";
+        var QueryString = "SELECT * FROM ?? ";
         connection.query(QueryString, tableInput, function(err, result) {
             if (err) {
                 throw err;
@@ -11,6 +11,16 @@ var orm = {
             cb(result);
         })
 
+    },
+    create: function(tableInput, Values, cb) {
+        var QueryString = "INSERT INTO ?? SET ?";
+        var query = connection.query(QueryString, [tableInput, Values], function(error, result, fields) {
+            if (error) {
+                throw error;
+            }
+            cb(result)
+            console.log(query.sql);
+        })
     }
 
 };

@@ -1,10 +1,25 @@
 //Adding the ORM functionality into the system. This would pull all the queries definitions 
-var orm = require("./burgerController");
+var express = require("express");
+var router = express.Router();
 
-var burger = {
-    all: function(cb) {
-        orm.all("burges", function(res) {
-            cb(res);
-        })
-    }
-}
+// import the module
+
+var burger = require("../models/burger.js");
+
+
+router.get("/", function(req, res) {
+    burger.all(function(data) {
+        var hbsObject = {
+            burgers: data
+        };
+        console.log(hbsObject);
+        res.render("index", hbsObject);
+    })
+});
+
+router.post("/api/burger", function(req, res) {
+    burger.create(req.body, function(result) {
+        res.json({ id: result.insertId });
+    })
+});
+module.exports = router;

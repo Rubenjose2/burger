@@ -1,0 +1,63 @@
+
+    <div class="container">
+
+        <div class=" col-md-9 col-lg-8">
+            <img src="/assets/images/big-jack-daddy-burger.png" class="img-responsive" alt="Image">
+        </div>
+
+        <div class=" col-md-4">
+            <h1 class="title">Burger Bistro</h1>
+            {{!-- Form Created to add more burger into the database --}}
+            <form id="create-burger">
+            <div class="form-group" >
+                <label for="">Please type your burger selection </label>
+                <input type="text" class="form-control" id="burger-name" placeholder="Type in your Burger">
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+            {{!-- End of the Form   --}}
+            <div class="visible" id="wish-list">
+
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th><h3>My Wish Lists of Burgers</h3></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {{#each burgers}}
+                            {{#unless devoured}}
+                        <tr>
+                            {{> burgers/burger-block}}
+                        </tr>
+                            {{/unless}}
+                        {{/each}}
+                    </tbody>
+                </table>
+
+            </div>
+
+            <div class="visible" id="devored">
+
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th><h3>Burger devored </h3> </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {{#each burgers}}
+                            {{#if devoured}}
+                        <tr>
+                            {{> burgers/burger-block}}
+                        </tr>
+                            {{/if}}
+                        {{/each}}
+                    </tbody>
+                </table>
+
+            </div>
+
+        </div>
+
+    </div>
