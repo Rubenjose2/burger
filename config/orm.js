@@ -21,6 +21,18 @@ var orm = {
             cb(result)
             console.log(query.sql);
         })
+    },
+    update: function(tableInput, Values, Id, cd) {
+        var QueryString = "UPDATE ?? SET ? WHERE id = ?"
+        var query = connection.query(QueryString, [tableInput, Values, Id], function(error, result, fields) {
+            if (error) {
+                throw error;
+            }
+            cd(result)
+            console.log(query.sql);
+        })
+
+
     }
 
 };

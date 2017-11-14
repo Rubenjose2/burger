@@ -1,10 +1,12 @@
 <th>{{burger_name}}</th>
 <th>
-	<button type="button" class="btn btn-xs btn-info" id="change-devoured" data-id="{{id}}" data-newsdevoured="{{devoured}}">
-	Eat This!
-	</button>
-
-    <button type="button" class="btn btn-xs btn-danger" id="delete-cat" data-id="{{this.id}}">
+    {{#if devoured}}
+    <button type="button" class="btn btn-xs btn-danger delete-cat" data-id="{{this.id}}">
     DELETE!
     </button>
+    {{else}}
+    <button type="button" class="btn btn-xs btn-info change-devoured" data-id="{{id}}" data-newsdevoured="{{devoured}}">
+    Eat This!
+	</button>
+    {{/if}}
  </th>    
