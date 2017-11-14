@@ -28,6 +28,18 @@ $(function() {
         }).then(function() {
             location.reload();
         })
+    });
+    $(".delete-burger").on("click", function(event) {
+        var id = $(this).data("id");
+
+        // Send the request to be Deleted
+
+        $.ajax("/api/burger/" + id, {
+            type: "DELETE"
+        }).then(function() {
+            console.log("Burger Deleted");
+            location.reload();
+        })
     })
 
 });

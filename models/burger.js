@@ -15,6 +15,11 @@ var burger = {
         orm.update("burgers", Values, Id, function(res) {
             cb(res);
         })
+    },
+    delete: function(Id, cb) {
+        orm.delete("burgers", Id, function(res) {
+            cb(res);
+        })
     }
 };
 

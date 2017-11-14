@@ -22,17 +22,25 @@ var orm = {
             console.log(query.sql);
         })
     },
-    update: function(tableInput, Values, Id, cd) {
-        var QueryString = "UPDATE ?? SET ? WHERE id = ?"
+    update: function(tableInput, Values, Id, cb) {
+        var QueryString = "UPDATE ?? SET ? WHERE id = ?";
         var query = connection.query(QueryString, [tableInput, Values, Id], function(error, result, fields) {
             if (error) {
                 throw error;
             }
-            cd(result)
+            cb(result);
             console.log(query.sql);
         })
-
-
+    },
+    delete: function(tableInput, Id, cb) {
+        var QueryString = "DELETE FROM ?? WHERE id = ?";
+        var query = connection.query(QueryString, [tableInput, Id], function(error, result, field) {
+            if (error) {
+                throw error;
+            }
+            cb(result);
+            console.log(query.sql);
+        })
     }
 
 };
